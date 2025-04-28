@@ -1,0 +1,68 @@
+/*
+設計一個 Book 類別，包含以下成員：
+
+    成員變數：
+        string title
+        string author
+        int pages
+    成員函數：
+        建構子（可以初始化以上資料）
+        void printInfo()：印出書本資訊
+
+要求：
+    私有化成員變數
+    用 public 的 getter 和 setter 方法操作成員變數
+*/
+
+#include <iostream>
+
+class Book
+{
+private:
+    std::string title;
+    std::string author;
+    int pages;
+
+public:
+    Book(std::string x, std::string y, int z)
+    {
+        title = x;
+        author = y;
+        pages = z;
+    }
+    ~Book() = default;
+
+    auto getTitle() { return title; }
+    auto getAuthor() { return author; }
+    int getPages() { return pages; }
+
+    void setTitle(std::string t) { title = t; }
+    void setAuthor(std::string a) { author = a; }
+    void setPages(int p) { pages = p; }
+
+    void printInfo()
+    {
+        std::cout << "Title: " << title 
+                  << ", Author: " << author 
+                  << ", Pages: " << pages << std::endl;
+    }
+};
+
+int main()
+{
+    std::string x;
+    std::string y;
+    int z;
+
+    std::cout << "input a book's info: " << std::endl;
+    std::cin >> x >> y >> z;
+
+    Book myBook(x, y, z); // initialize an Book object
+
+    int newPages = 100;
+    myBook.setPages(newPages);
+
+    myBook.printInfo();
+
+    return 0;
+}
